@@ -10,8 +10,6 @@
       "24": "fly.png",
       "48": "fly.png"
    },
-   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC8cGo9IxmbHAMUc7l852IPGzjBGbPVnsK1BW+THsdnRvO8yf3afDoNvdEhdh2+udvhymW2MazcHfyAg+rNtu+xqaGU1Qny3wH7wGHnlYEf3hESSxaa8hnN4OeZye2BeTSeMSdIDH1MISmGlFFIXzWkNgPJDKzOeOc/NjiBzCJ23wIDAQAB",
    "name": "Youtube Auto Replay",
-   "update_url": "http://clients2.google.com/service/update2/crx",
-   "version": "1.0"
+   "version": "1.1"
 }
