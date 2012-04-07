@@ -1,13 +1,22 @@
 var getVideoObj = function(){
-	var flashobj = window.document.getElementById("movie_player");
-    if(flashobj){
-        return flashobj;
+    var videoObj;
+	videoObj = window.document.getElementById("movie_player");
+    if(videoObj){
+        return videoObj;
     }
 
-    var html5obj = window.document.getElementsByTagName("video")[0];
-    if(html5obj){
-        return html5obj;
+    videoObj = window.document.getElementsByTagName("video")[0];
+    if(videoObj){
+        videoObj.getPlayerState = function(){
+            return videoObj.ended ? 0 : 1;
+        }
+        videoObj.seekTo = function(value){
+            videoObj.currentTime = value;
+            videoObj.play(); // why play() is necessary?
+        }
     }
+    
+    return videoObj;
 };
 
 var addIcon = function(){
@@ -17,18 +26,22 @@ var addIcon = function(){
     document.getElementById("watch-actions").appendChild(iconTag);
 };
 
-var videoObj = function(){
+var pollingCheckAndSeek = function(){
     addIcon();
     var video = getVideoObj();
 	if(video){
 		setInterval(function(){
-			if(video.getPlayerState() == 0/*unrealize*/){
+			if(video.getPlayerState() == 0/*ended*/){
 				video.seekTo(0, true);
 			}	
 		}, 250);
 	}
 };
 
+var addDebugMenu = function(){
+    var div = document.createElement('div');
+}
+
 setTimeout(function(){
-	videoObj();
+    pollingCheckAndSeek();
 }, 1000);
