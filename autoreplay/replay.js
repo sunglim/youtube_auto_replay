@@ -13,6 +13,12 @@ var getVideoObj = function(){
             html5VideoObj.currentTime = value;
             html5VideoObj.play(); // why play() is necessary?
         }
+        html5VideoObj.pauseVideo= function(){
+            html5VideoObj.pause();
+        }
+        html5VideoObj.playVideo= function(){
+            html5VideoObj.play();
+        }
         return html5VideoObj;
     }
     
@@ -33,6 +39,11 @@ var pollingCheckAndSeek = function(){
 		setInterval(function(){
 			if(video.getPlayerState() == 0/*ended*/){
 				video.seekTo(0, true);
+                // because of Youtube Bug.
+                // registered on Youtube issue tracker
+                video.pauseVideo();
+                video.playVideo();
+                // end of temp code
 			}	
 		}, 250);
 	}
