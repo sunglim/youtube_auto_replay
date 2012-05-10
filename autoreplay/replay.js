@@ -1,22 +1,22 @@
 var getVideoObj = function(){
-    var videoObj;
-	videoObj = window.document.getElementById("movie_player");
-    if(videoObj){
-        return videoObj;
+    var flashVideoObj = window.document.getElementById("movie_player");
+    if(flashVideoObj){
+        return flashVideoObj;
     }
 
-    videoObj = window.document.getElementsByTagName("video")[0];
-    if(videoObj){
-        videoObj.getPlayerState = function(){
-            return videoObj.ended ? 0 : 1;
+    var html5VideoObj = window.document.getElementsByTagName("video")[0];
+    if(html5VideoObj){
+        html5VideoObj.getPlayerState = function(){
+            return html5VideoObj.ended ? 0 : 1;
         }
-        videoObj.seekTo = function(value){
-            videoObj.currentTime = value;
-            videoObj.play(); // why play() is necessary?
+        html5VideoObj.seekTo = function(value){
+            html5VideoObj.currentTime = value;
+            html5VideoObj.play(); // why play() is necessary?
         }
+        return html5VideoObj;
     }
     
-    return videoObj;
+    return null;
 };
 
 var addIcon = function(){
