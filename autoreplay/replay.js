@@ -1,25 +1,25 @@
-var getVideoObj = function(){
-    var flashVideoObj = window.document.getElementById("movie_player");
-    if(flashVideoObj){
-        return flashVideoObj;
+var getPlayerObj = function(){
+    var flashPlayerObj = window.document.getElementById("movie_player");
+    if(flashPlayerObj){
+        return flashPlayerObj;
     }
 
-    var html5VideoObj = window.document.getElementsByTagName("video")[0];
-    if(html5VideoObj){
-        html5VideoObj.getPlayerState = function(){
-            return html5VideoObj.ended ? 0 : 1;
+    var html5PlayerObj = window.document.getElementsByTagName("video")[0];
+    if(html5PlayerObj){
+        html5PlayerObj.getPlayerState = function(){
+            return html5PlayerObj.ended ? 0 : 1;
         }
-        html5VideoObj.seekTo = function(value){
-            html5VideoObj.currentTime = value;
-            html5VideoObj.play(); // why play() is necessary?
+        html5PlayerObj.seekTo = function(value){
+            html5PlayerObj.currentTime = value;
+            html5PlayerObj.play(); // why play() is necessary?
         }
-        html5VideoObj.pauseVideo= function(){
-            html5VideoObj.pause();
+        html5PlayerObj.pauseVideo= function(){
+            html5PlayerObj.pause();
         }
-        html5VideoObj.playVideo= function(){
-            html5VideoObj.play();
+        html5PlayerObj.playVideo= function(){
+            html5PlayerObj.play();
         }
-        return html5VideoObj;
+        return html5PlayerObj;
     }
     
     return null;
@@ -34,19 +34,19 @@ var addIcon = function(){
 
 var pollingCheckAndSeek = function(){
     addIcon();
-    var video = getVideoObj();
-	if(video){
-		setInterval(function(){
-			if(video.getPlayerState() == 0/*ended*/){
-				video.seekTo(0, true);
-                // because of Youtube Bug.
-                // registered on Youtube issue tracker
-                video.pauseVideo();
-                video.playVideo();
-                // end of temp code
-			}	
-		}, 250);
-	}
+    var playerObj = getPlayerObj();
+    if(playerObj){
+	setInterval(function(){
+		if(playerObj.getPlayerState() == 0/*ended*/){
+			playerObj.seekTo(0, true);
+	                // because of Youtube Bug.
+	                // registered on Youtube issue tracker
+	                playerObj.pauseVideo();
+	                playerObj.playVideo();
+	                // end of temp code
+		}	
+	}, 250);
+    }
 };
 
 var addDebugMenu = function(){
