@@ -30,7 +30,21 @@ var addIcon = function(){
     iconTag.src = chrome.extension.getURL("icon2.png");
     iconTag.setAttribute("style","vertical-align:middle;float:right");
     document.getElementById("watch-actions").appendChild(iconTag);
+	
+	var likeCountTag = document.createElement('span');
+	likeCountTag.className = "watch-likes-dislikes";
+	likeCountTag.id = "replayCount";
+	var tagLocation = document.getElementById("watch-description-extra-info").getElementsByTagName("li")[0];
+	if(tagLocation!=null){
+		document.getElementById("watch-description-extra-info").insertBefore(likeCountTag,tagLocation);	
+	}
 };
+
+var replayCount = 0;
+var updateReplayCount = function(){
+	replayCount++;
+	document.getElementById("replayCount").innerHTML = replayCount + "time(s) auto-replayed";
+}
 
 var pollingCheckAndSeek = function(){
     addIcon();
@@ -44,6 +58,7 @@ var pollingCheckAndSeek = function(){
 	                playerObj.pauseVideo();
 	                playerObj.playVideo();
 	                // end of temp code
+			updateReplayCount();
 		}	
 	}, 250);
     }
