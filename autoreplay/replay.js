@@ -34,6 +34,8 @@ var addIcon = function(){
 	var likeCountTag = document.createElement('span');
 	likeCountTag.className = "watch-likes-dislikes";
 	likeCountTag.id = "replayCount";
+	likeCountTag.innerHTML = "0 time(s) auto-replayed";
+	
 	var tagLocation = document.getElementById("watch-description-extra-info").getElementsByTagName("li")[0];
 	if(tagLocation!=null){
 		document.getElementById("watch-description-extra-info").insertBefore(likeCountTag,tagLocation);	
