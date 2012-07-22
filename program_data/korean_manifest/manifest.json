@@ -11,6 +11,9 @@
 		"24": "fly.png",
 		"48": "fly.png"
 	},
+	"web_accessible_resources": [
+		"icon2.png"
+	],
 	"name": "유투브 자동 반복 (Youtube Auto Replay)",
-	"version": "1.4.1"
+	"version": "1.4.2"
 }
