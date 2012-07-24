@@ -1,0 +1,14 @@
+﻿{
+	"appname": {
+		"message": "유투브 자동 반복 (Youtube Auto Replay)",
+		"description": "Extension name."
+	},
+	"appdesc": {
+		"message": "유투브 자동 반복 (Youtube Auto Replay)",
+		"description": "Extension desc."
+	},
+	"TimesAutoReplayed": {
+		"message": "회 자동반복됨",
+		"description": "유투브페이지에 반복횟수 뒤에 붙는 말"
+	}
+}

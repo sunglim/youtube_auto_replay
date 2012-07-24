@@ -34,7 +34,7 @@ var addIcon = function(){
 	var likeCountTag = document.createElement('span');
 	likeCountTag.className = "watch-likes-dislikes";
 	likeCountTag.id = "replayCount";
-	likeCountTag.innerHTML = "0 time(s) auto-replayed";
+	likeCountTag.innerHTML = "0" + chrome.i18n.getMessage("TimesAutoReplayed");
 	
 	var tagLocation = document.getElementById("watch-description-extra-info").getElementsByTagName("li")[0];
 	if(tagLocation!=null){
@@ -45,7 +45,7 @@ var addIcon = function(){
 var replayCount = 0;
 var updateReplayCount = function(){
 	replayCount++;
-	document.getElementById("replayCount").innerHTML = replayCount + "time(s) auto-replayed";
+	document.getElementById("replayCount").innerHTML = replayCount + chrome.i18n.getMessage("TimesAutoReplayed");
 }
 
 var pollingCheckAndSeek = function(){
