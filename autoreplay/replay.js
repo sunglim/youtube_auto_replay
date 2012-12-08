@@ -26,11 +26,12 @@ var getPlayerObj = function(){
 };
 
 var addIcon = function(){
+	/*
     var iconTag = document.createElement('IMG');
     iconTag.src = chrome.extension.getURL("icon2.png");
     iconTag.setAttribute("style","vertical-align:middle;float:right");
     document.getElementById("watch-actions").appendChild(iconTag);
-	
+	*/
 	var likeCountTag = document.createElement('span');
 	likeCountTag.className = "watch-likes-dislikes";
 	likeCountTag.id = "replayCount";
