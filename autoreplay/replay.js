@@ -25,14 +25,14 @@ var getPlayerObj = function() {
 };
 
 var addIcon = function() {
-  var likeCountTag = document.createElement('span');
-  likeCountTag.className = "watch-likes-dislikes";
+  var likeCountTag = document.createElement('div');
   likeCountTag.id = "replayCount";
+  likeCountTag.className = "watch-view-count";
   likeCountTag.innerHTML = "0" + chrome.i18n.getMessage("TimesAutoReplayed");
 
-  var tagLocation = document.getElementById("watch-description-extra-info").getElementsByTagName("li")[0];
+  var tagLocation = document.getElementById("watch7-views-info");
   if (tagLocation != null) {
-    document.getElementById("watch-description-extra-info").insertBefore(likeCountTag,tagLocation);	
+    document.getElementById("watch7-views-info").appendChild(likeCountTag);	
   }
 };
 
