@@ -1,6 +1,6 @@
 var getPlayerObj = function() {
   var flashPlayerObj = window.document.getElementById("movie_player");
-  if (flashPlayerObj) {
+  if (flashPlayerObj && flashPlayerObj.tagName === 'embed') {
     return flashPlayerObj;
   }
 
