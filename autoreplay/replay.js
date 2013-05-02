@@ -1,6 +1,7 @@
 var getPlayerObj = function() {
   var flashPlayerObj = window.document.getElementById("movie_player");
-  if (flashPlayerObj) {
+  if (flashPlayerObj && 
+      (flashPlayerObj.tagName === 'embed' || flashPlayerObj.tagName === 'EMBED')) {
     return flashPlayerObj;
   }
 
@@ -39,7 +40,8 @@ var addIcon = function() {
 var replayCount = 0;
 var updateReplayCount = function() {
   replayCount++;
-  document.getElementById("replayCount").innerHTML = replayCount + chrome.i18n.getMessage("TimesAutoReplayed");
+  document.getElementById("replayCount").innerHTML =
+      replayCount + chrome.i18n.getMessage("TimesAutoReplayed");
 };
 
 var pollingCheckAndSeek = function() {
