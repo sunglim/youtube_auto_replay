@@ -1,3 +1,5 @@
+// Sungguk Lim <limasdf@gmail.com> all right reserved.
+
 var getPlayerObj = function() {
   var flashPlayerObj = window.document.getElementById("movie_player");
   if (flashPlayerObj && 
