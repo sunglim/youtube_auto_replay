@@ -1,4 +1,4 @@
-﻿{
+{
 	"manifest_version": 2,
 	"content_scripts": [ {
 		"js": [ "replay.js" ],
@@ -18,3 +18,6 @@
 	"name": "__MSG_appname__",
 	"version": "1.6.2"
 }
+nike
+adidas
+what the funk
