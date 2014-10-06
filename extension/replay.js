@@ -27,7 +27,7 @@ var getPlayerObj = function() {
   return null;
 };
 
-var addIcon = function() {
+var addCountMessage = function() {
   var likeCountTag = document.createElement('div');
   likeCountTag.id = "replayCount";
   likeCountTag.className = "watch-view-count";
@@ -47,19 +47,19 @@ var updateReplayCount = function() {
 };
 
 var pollingCheckAndSeek = function() {
-  addIcon();
+  addCountMessage();
   var playerObj = getPlayerObj();
   if (playerObj) {
     setInterval(function() {
       if (playerObj.getPlayerState() == 0/*ended*/) {
         playerObj.seekTo(0, true);
-        // because of Youtube Bug.
-        // registered on Youtube issue tracker
+        // Because of Youtube Bug.
+        // registered on Youtube issue tracker.
         playerObj.pauseVideo();
         playerObj.playVideo();
-        // end of temp code
+        // End of temp code.
         updateReplayCount();
-      }	
+      }
     }, 250);
   }
 };
