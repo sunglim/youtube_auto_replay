@@ -30,12 +30,11 @@ var getPlayerObj = function() {
 var addCountMessage = function() {
   var likeCountTag = document.createElement('div');
   likeCountTag.id = "replayCount";
-  likeCountTag.className = "watch-view-count";
-  likeCountTag.innerHTML = "0" + chrome.i18n.getMessage("TimesAutoReplayed");
+  likeCountTag.innerHTML = "0 " + chrome.i18n.getMessage("TimesAutoReplayed");
 
   var tagLocation = document.getElementById("watch7-views-info");
   if (tagLocation != null) {
-    document.getElementById("watch7-views-info").appendChild(likeCountTag);	
+    document.getElementById("watch7-views-info").childNodes[0].appendChild(likeCountTag);
   }
 };
 
