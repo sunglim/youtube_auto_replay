@@ -1,7 +1,7 @@
 ﻿{
   "manifest_version": 2,
   "name": "__MSG_appname__",
-  "version": "1.6.2",
+  "version": "1.7",
   "default_locale": "en",
   "description": "__MSG_appdesc__",
   "content_scripts": [ {
@@ -13,6 +13,5 @@
     "18": "fly.png",
     "24": "fly.png",
     "48": "fly.png"
-  },
-  "web_accessible_resources": [ "icon.png" ]
+  }
 }
