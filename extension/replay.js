@@ -67,6 +67,29 @@ var addDebugMenu = function() {
   var div = document.createElement('div');
 };
 
-setTimeout(function() {
-  pollingCheckAndSeek();
-}, 1000);
+chrome.storage.local.get('YtAutoCheck', function (result) {
+       
+       if(result.YtAutoCheck !== undefined){
+            if(result.YtAutoCheck){
+                setTimeout(function() {
+                    pollingCheckAndSeek();
+                }, 1000);
+
+            }else{
+
+              chrome.commands.onCommand.addListener(function(command) {
+                
+                 if (command == "replay") {
+                    pollingCheckAndSeek();
+                }
+
+
+              });
+
+            }
+
+       }else{
+        chrome.storage.local.set({  YtAutoCheck: true});
+       }
+
+});

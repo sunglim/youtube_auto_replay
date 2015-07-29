@@ -13,5 +13,18 @@
     "18": "fly.png",
     "24": "fly.png",
     "48": "fly.png"
+  },
+  "options_page": "options.html",
+  "permissions": [
+          "storage"
+  ],
+ "commands": {
+    "replay": {
+      "suggested_key": {
+        "default": "MediaPlayPause",
+        "windows": "MediaPlayPause",
+        "linux":"MediaPlayPause"
+      }
+    }
   }
 }
