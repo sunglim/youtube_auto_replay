@@ -69,27 +69,37 @@ var addDebugMenu = function() {
 
 chrome.storage.local.get('YtAutoCheck', function (result) {
        
-       if(result.YtAutoCheck !== undefined){
-            if(result.YtAutoCheck){
+       if(result.YtAutoCheck != undefined){
+            if(result.YtAutoCheck){ 
                 setTimeout(function() {
                     pollingCheckAndSeek();
                 }, 1000);
+               
 
-            }else{
-
-              chrome.commands.onCommand.addListener(function(command) {
-                
-                 if (command == "replay") {
-                    pollingCheckAndSeek();
-                }
-
-
+            }else{ 
+              chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
+                 if (msg.action == 'replay') {
+                      addCountMessage();
+                      var playerObj = getPlayerObj();
+                      if (playerObj) {
+                          
+                            playerObj.seekTo(0, true); 
+                            playerObj.pauseVideo();
+                            playerObj.playVideo(); 
+                            updateReplayCount();
+                          
+                      
+                      }
+                 }
               });
-
             }
 
-       }else{
+       }else{ 
         chrome.storage.local.set({  YtAutoCheck: true});
        }
 
 });
+
+
+
+

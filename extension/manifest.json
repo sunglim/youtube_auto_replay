@@ -4,6 +4,11 @@
   "version": "1.7",
   "default_locale": "en",
   "description": "__MSG_appdesc__",
+   "background":
+    {
+    "scripts": ["background.js"],
+    "persistent": true
+    },
   "content_scripts": [ {
     "matches": [ "http://www.youtube.com/*", "https://www.youtube.com/*" ],
     "js": [ "replay.js" ],
@@ -16,15 +21,19 @@
   },
   "options_page": "options.html",
   "permissions": [
-          "storage"
+          "storage",
+           "tabs"
   ],
- "commands": {
-    "replay": {
-      "suggested_key": {
-        "default": "MediaPlayPause",
-        "windows": "MediaPlayPause",
-        "linux":"MediaPlayPause"
-      }
+   "commands": {
+        "replay": {
+            "suggested_key": {
+                "default": "MediaPlayPause",
+                "windows": "MediaPlayPause",
+                "linux":"MediaPlayPause"
+            },
+            "global":true,
+            "description":"test"
+        }
     }
-  }
 }
+
