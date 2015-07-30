@@ -10,5 +10,25 @@
   "TimesAutoReplayed": {
     "message": "replayed",
     "description": "follow the replay count on frontend page"
+  },
+  "OptionsHeaderTitle": {
+    "message": "Youtube Auto Replay Settings",
+    "description": "Youtube Auto Replay Settings"
+  },
+  "OptionSave": {
+    "message": "Settings saved..",
+    "description": "setting status message"
+  },
+  "ReplayCheck": {
+    "message": "Replay Check",
+    "description": "Replay Check"
+  },
+  "Check": {
+    "message": "Auto Replay",
+    "description": "Auto Replay"
+  },
+  "Button": {
+    "message": "Settings Save",
+    "description": "Settings Save"
   }
 }

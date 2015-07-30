@@ -1,7 +1,7 @@
 ﻿{
   "manifest_version": 2,
   "name": "__MSG_appname__",
-  "version": "1.7",
+  "version": "1.8",
   "default_locale": "en",
   "description": "__MSG_appdesc__",
    "background":
@@ -32,7 +32,7 @@
                 "linux":"MediaPlayPause"
             },
             "global":true,
-            "description":"test"
+            "description":"Command Key"
         }
     }
 }

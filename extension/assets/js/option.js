@@ -13,6 +13,13 @@ this.forEach(function (elem, i) {
 
 }
 
+function localize() {
+    
+    $('[i18n-content]').forEach(function(element, index){
+        element.innerHTML = chrome.i18n.getMessage(element.getAttribute('i18n-content'));
+    });
+}
+
 function default_value(){
 	chrome.storage.local.get('YtAutoCheck', function (result) {
        
@@ -35,7 +42,7 @@ function save_options() {
 	  }, function() {
 	    // Update status to let user know options were saved.
 	    var status = document.getElementById('status');
-	    status.textContent = 'Options saved.';
+	    status.textContent = chrome.i18n.getMessage("OptionSave");
 	    setTimeout(function() {
 	      status.textContent = '';
 	    }, 950);
@@ -45,6 +52,7 @@ function save_options() {
 
 
 default_value();
+localize();
 
 $('button').on('click', function (e) {
     save_options();
