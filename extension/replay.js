@@ -42,31 +42,66 @@ var replayCount = 0;
 var updateReplayCount = function() {
   replayCount++;
   document.getElementById("replayCount").innerHTML =
-      replayCount + chrome.i18n.getMessage("TimesAutoReplayed");
+      replayCount + " " +  chrome.i18n.getMessage("TimesAutoReplayed");
 };
 
 var pollingCheckAndSeek = function() {
-  addCountMessage();
-  var playerObj = getPlayerObj();
-  if (playerObj) {
-    setInterval(function() {
-      if (playerObj.getPlayerState() == 0/*ended*/) {
-        playerObj.seekTo(0, true);
-        // Because of Youtube Bug.
-        // registered on Youtube issue tracker.
-        playerObj.pauseVideo();
-        playerObj.playVideo();
-        // End of temp code.
-        updateReplayCount();
-      }
-    }, 250);
-  }
+  if(!document.getElementById("replayCount")) addCountMessage();
+  replay();
 };
 
+var replay = function(interval){
+  
+  var playerObj = getPlayerObj();
+  if (playerObj) {
+    if(interval){
+      setInterval(function() {
+          if (playerObj.getPlayerState() == 0/*ended*/) {
+            playerObj.seekTo(0, true);
+            // Because of Youtube Bug.
+            // registered on Youtube issue tracker.
+            playerObj.pauseVideo();
+            playerObj.playVideo();
+            // End of temp code.
+            updateReplayCount();
+          }
+        }, 250);
+    }else{
+            playerObj.seekTo(0, true); 
+            playerObj.pauseVideo();
+            playerObj.playVideo(); 
+            updateReplayCount();
+    }
+  }
+
+}
 var addDebugMenu = function() {
   var div = document.createElement('div');
 };
 
-setTimeout(function() {
-  pollingCheckAndSeek();
-}, 1000);
+chrome.storage.local.get('YtAutoCheck', function (result) {
+       
+       if(result.YtAutoCheck != undefined){
+            if(result.YtAutoCheck){ 
+                setTimeout(function() {
+                    pollingCheckAndSeek(true);
+                }, 1000);
+               
+
+            }else{ 
+              chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
+                 if (msg.action == 'replay') {
+                      pollingCheckAndSeek();
+                 }
+              });
+            }
+
+       }else{ 
+        chrome.storage.local.set({  YtAutoCheck: true});
+       }
+
+});
+
+
+
+
