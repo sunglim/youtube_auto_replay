@@ -46,48 +46,33 @@ var updateReplayCount = function() {
 };
 
 var pollingCheckAndSeek = function() {
-  if (!document.getElementById("replayCount"))
-    addCountMessage();
-  replay();
-};
-
-var replay = function(interval){
+  addCountMessage();
   var playerObj = getPlayerObj();
   if (playerObj) {
-    if (interval) {
-      setInterval(function() {
-        if (playerObj.getPlayerState() == 0/*ended*/) {
-          playerObj.seekTo(0, true);
-          // Because of Youtube Bug.
-          // registered on Youtube issue tracker.
-          playerObj.pauseVideo();
-          playerObj.playVideo();
-          // End of temp code.
-          updateReplayCount();
-        }
-      }, 250);
-    } else {
-      playerObj.seekTo(0, true);
-      playerObj.pauseVideo();
-      playerObj.playVideo(); 
-      updateReplayCount();
-    }
+    setInterval(function() {
+      if (playerObj.getPlayerState() == 0/*ended*/) {
+        playerObj.seekTo(0, true);
+        // Because of Youtube Bug.
+        // registered on Youtube issue tracker.
+        playerObj.pauseVideo();
+        playerObj.playVideo();
+        // End of temp code.
+        updateReplayCount();
+      }
+    }, 250);
   }
-}
+};
 
+// TODO(sunglim): Check if we should move this function to background page.
 chrome.storage.local.get('YtAutoCheck', function (result) {
-  if (result.YtAutoCheck != undefined) {
-    if(result.YtAutoCheck){ 
-      setTimeout(function() {
-        pollingCheckAndSeek();
-      }, 1000);
-    } else { 
-      chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
-        if (msg.action == 'replay')
-          pollingCheckAndSeek();
-      });
-    }
-  } else { 
+  if (result.YtAutoCheck == undefined) {
     chrome.storage.local.set({YtAutoCheck: true});
+    return;
+  }
+
+  if (result.YtAutoCheck){ 
+    setTimeout(function() {
+      pollingCheckAndSeek();
+    }, 1000);
   }
 });
