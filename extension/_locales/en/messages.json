@@ -4,20 +4,20 @@
     "description": "Extension name."
   },
   "appdesc": {
-    "message": "light Youtube Auto Replay, It's light and simple!",
+    "message": "Light Youtube Auto Replay, It's light and simple!",
     "description": "Extension desc."
   },
   "TimesAutoReplayed": {
     "message": "replayed",
-    "description": "follow the replay count on frontend page"
+    "description": "Follow the replay count on frontend page."
   },
   "OptionsHeaderTitle": {
     "message": "Youtube Auto Replay Settings",
     "description": "Youtube Auto Replay Settings"
   },
   "OptionSave": {
-    "message": "Settings saved..",
-    "description": "setting status message"
+    "message": "Settings saved.",
+    "description": "Setting status message"
   },
   "ReplayCheck": {
     "message": "Replay Check",
