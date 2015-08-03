@@ -4,11 +4,10 @@
   "version": "1.8",
   "default_locale": "en",
   "description": "__MSG_appdesc__",
-   "background":
-    {
+  "background": {
     "scripts": ["background.js"],
     "persistent": true
-    },
+  },
   "content_scripts": [ {
     "matches": [ "http://www.youtube.com/*", "https://www.youtube.com/*" ],
     "js": [ "replay.js" ],
@@ -20,20 +19,17 @@
     "48": "fly.png"
   },
   "options_page": "options.html",
-  "permissions": [
-          "storage",
-           "tabs"
-  ],
-   "commands": {
-        "replay": {
-            "suggested_key": {
-                "default": "MediaPlayPause",
-                "windows": "MediaPlayPause",
-                "linux":"MediaPlayPause"
-            },
-            "global":true,
-            "description":"Command Key"
-        }
+  "permissions": ["storage", "tabs"],
+  "commands": {
+    "replay": {
+      "suggested_key": {
+        "default": "MediaPlayPause",
+        "windows": "MediaPlayPause",
+        "linux":"MediaPlayPause"
+      },
+      "global":true,
+      "description":"Command Key"
     }
+  }
 }
 

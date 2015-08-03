@@ -1,39 +1,33 @@
 ﻿<!DOCTYPE html>
 <html>
-    <head>
-        <title>Youtube Auto Replay</title>
-        <link rel="stylesheet" href="assets/style/chrome_shared.css"/>
-           <style>
-            /* Style for this page */
-            body>.main-container{max-width:800px;margin:50px auto}
-            header{max-width:700px;margin:0 auto 50px auto;font-size:48px} 
-            </style>
-    </head>
-    <body>
-     
-        <div class="main-container">
-            <header i18n-content="OptionsHeaderTitle">
-              Youtube Auto Replay Settings
-            </header>
+<head>
+    <title>Youtube Auto Replay</title>
+    <link rel="stylesheet" href="assets/style/chrome_shared.css"/>
+    <style>
+     /* Style for this page */
+     body>.main-container{max-width:800px;margin:50px auto}
+     header{max-width:700px;margin:0 auto 50px auto;font-size:48px} 
+     </style>
+</head>
+<body>
+    <div class="main-container">
+        <header i18n-content="OptionsHeaderTitle">
+          Youtube Auto Replay Settings
+        </header>
 
-            <h3 i18n-content="ReplayCheck"> Replay Checking..</h3>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="check"><span i18n-content="Check">Auto Check</span>
-                    
-                </label>
-            </div>
-           <br>
-           <br>
-
-           <button style="font-size:11px" i18n-content="Button">Ayarları Daydet</button>
-            
-            <br>
-            <br>
-            
-            <div id="status"></div>
-          
+        <h3 i18n-content="ReplayCheck"> Replay Checking..</h3>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" name="check"><span i18n-content="Check">Auto Check</span>
+                
+            </label>
         </div>
-      <script src="assets/js/option.js"></script>
-    </body>
+       <br><br>
+       <button style="font-size:11px" i18n-content="Button">Ayarları Daydet</button>
+        <br><br>
+        <div id="status"></div>
+      
+    </div>
+  <script src="assets/js/option.js"></script>
+</body>
 </html>
