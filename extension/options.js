@@ -1,7 +1,10 @@
 ﻿function localize() {
-  document.getElementById('replay_check').innerText = chrome.i18n.getMessage('ReplayCheck');
-  document.getElementById('auto_check_span').innerText = chrome.i18n.getMessage('Check');
-  document.getElementById('save_button').innerText = chrome.i18n.getMessage('Button');
+  document.getElementById('replay_check').innerText =
+      chrome.i18n.getMessage('ReplayCheck');
+  document.getElementById('auto_check_span').innerText =
+      chrome.i18n.getMessage('optionAutoReplay');
+  document.getElementById('save_button').innerText =
+      chrome.i18n.getMessage('buttonSaveOption');
 }
 
 function restore_options() {

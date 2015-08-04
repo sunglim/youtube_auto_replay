@@ -30,7 +30,7 @@ var getPlayerObj = function() {
 var addCountMessage = function() {
   var likeCountTag = document.createElement('div');
   likeCountTag.id = "replayCount";
-  likeCountTag.innerHTML = "0 " + chrome.i18n.getMessage("TimesAutoReplayed");
+  likeCountTag.innerHTML = "0 " + chrome.i18n.getMessage("timesAutoReplayed");
 
   var tagLocation = document.getElementById("watch7-views-info");
   if (tagLocation != null) {
@@ -42,7 +42,7 @@ var replayCount = 0;
 var updateReplayCount = function() {
   replayCount++;
   document.getElementById("replayCount").innerHTML =
-      replayCount + " " +  chrome.i18n.getMessage("TimesAutoReplayed");
+      replayCount + " " +  chrome.i18n.getMessage("timesAutoReplayed");
 };
 
 var pollingCheckAndSeek = function() {
