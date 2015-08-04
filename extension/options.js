@@ -1,38 +1,22 @@
-﻿window.$ = document.querySelectorAll.bind(document);
-
-Node.prototype.on = window.on = function (name, fn) {
-  this.addEventListener(name, fn);
+﻿function localize() {
+  document.getElementById('replay_check').innerText =
+      chrome.i18n.getMessage('ReplayCheck');
+  document.getElementById('auto_check_span').innerText =
+      chrome.i18n.getMessage('optionAutoReplay');
+  document.getElementById('save_button').innerText =
+      chrome.i18n.getMessage('buttonSaveOption');
 }
 
-NodeList.prototype.__proto__ = Array.prototype;
-
-NodeList.prototype.on =
-    NodeList.prototype.addEventListener = function (name, fn) {
-      this.forEach(function (elem, i) {
-        elem.on(name, fn);
-      });
-}
-
-function localize() {
-  $('[i18n-content]').forEach(function(element, index){
-      element.innerHTML =
-          chrome.i18n.getMessage(element.getAttribute('i18n-content'));
-  });
-}
-
-function default_value(){
-  chrome.storage.local.get('YtAutoCheck', function (result) {
-     
-     if(result.YtAutoCheck){
-     		$("input[name=check]")[0].setAttribute("checked", "checked");
-     }else{
-     		$("input[name=check]")[0].removeAttribute("checked");
-     }
+function restore_options() {
+  chrome.storage.local.get({
+    YtAutoCheck: true
+  }, function(result) {
+    document.getElementById('auto_check').checked = result.YtAutoCheck;
   });
 }
 
 function save_options() { 
-  var value=$("input[name=check]")[0].checked; 
+  var value = document.getElementById('auto_check').checked; 
 
   chrome.storage.local.set({
     YtAutoCheck: value
@@ -46,9 +30,10 @@ function save_options() {
   });
 }
 
-default_value();
-localize();
+function init() {
+  localize();
+  restore_options();
+}
 
-$('button').on('click', function (e) {
-  save_options();
-});
+document.addEventListener('DOMContentLoaded', init);
+document.getElementById('save_button').addEventListener('click', save_options);
