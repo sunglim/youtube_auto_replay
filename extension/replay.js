@@ -38,6 +38,17 @@ var addCountMessage = function() {
   }
 };
 
+var addDisabledMessage = function() {
+  var likeCountTag = document.createElement('div');
+  likeCountTag.id = 'replayCount';
+  likeCountTag.innerHTML = 'Auto-replay disabled';
+
+  var tagLocation = document.getElementById("watch7-views-info");
+  if (tagLocation != null) {
+    document.getElementById("watch7-views-info").childNodes[0].appendChild(likeCountTag);
+  }
+}
+
 var replayCount = 0;
 var updateReplayCount = function() {
   replayCount++;
@@ -74,5 +85,7 @@ chrome.storage.local.get('YtAutoCheck', function (result) {
     setTimeout(function() {
       pollingCheckAndSeek();
     }, 1000);
+  } else {
+    addDisabledMessage();
   }
 });
