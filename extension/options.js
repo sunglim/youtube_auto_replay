@@ -16,7 +16,7 @@ function restore_options() {
 }
 
 function save_options() { 
-  var value = document.getElementById('auto_check').checked; 
+  var value = document.getElementById('auto_check').checked;
 
   chrome.storage.local.set({
     YtAutoCheck: value
