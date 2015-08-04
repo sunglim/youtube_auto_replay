@@ -28,7 +28,7 @@
     "description": "Auto Replay"
   },
   "Button": {
-    "message": "Settings Save",
-    "description": "Settings Save"
+    "message": "Save Setting",
+    "description": "Button message to save options"
   }
 }
